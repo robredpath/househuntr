@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-#require 'sinatra'
+require 'sinatra'
 require 'csv'
 require 'pp'
 require 'net/http'
