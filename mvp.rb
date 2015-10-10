@@ -54,7 +54,7 @@ post '/' do
 	new_filter_value = params[:new_filter_time]
 
 	filters.push {
-		filter_label: new_filter_label
+		filter_label: new_filter_label,
 		filter_value: new_filter_value
 	}
 
