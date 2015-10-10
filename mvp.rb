@@ -31,6 +31,7 @@ get '/' do
 	simple_search_data.each do |property|
 		url = URI::parse("https://maps.googleapis.com/maps/api/directions/json?origin=#{property[1]}&destination=#{from_tram_stop}&key=AIzaSyBz0ZEOpH17m35flnCwMrkei1xHlWgZohQ")
 		req = Net::HTTP::Get.new(url.to_s)
+		req.use_ssl = true
 		res = Net::HTTP.start(url.host, url.port) {|http|
  		 http.request(req)
 		}
