@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
-require 'sinatra'
+#require 'sinatra'
 require 'csv'
 require 'pp'
 require 'net/http'
+require 'json'
 
 get '/' do
 
@@ -29,15 +30,14 @@ get '/' do
 	from_tram_stop = "Nottingham%20Trent%20University%20Tram%20Stop"
 
 	simple_search_data.each do |property|
-		uri = URI("https://maps.googleapis.com/maps/api/directions/json?origin=#{property[1]}&destination=#{from_tram_stop}&key=AIzaSyBz0ZEOpH17m35flnCwMrkei1xHlWgZohQ")
+		uri = URI("https://maps.googleapis.com/maps/api/distancematrix/json?mode=walking&origins=#{property[1]}&destinations=#{from_tram_stop}&key=AIzaSyBz0ZEOpH17m35flnCwMrkei1xHlWgZohQ")
 
 		Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|   
 			request = Net::HTTP::Get.new uri
 			response = http.request request # Net::HTTPResponse object 
-			output.concat response.body.pretty_inspect
-
+			duration = JSON.parse(response.body)["rows"].first["elements"].first["duration"]["text"] 
+			output.concat "#{property[2]} in #{property[1]} for £#{property[0]} and #{duration} mins walk from trent tram stop\n"
 		end 
-
 	end
 
 	# if so => grab additional data from google maps API
