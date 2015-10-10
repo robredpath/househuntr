@@ -62,7 +62,7 @@ post '/' do
 
 	template = File.read('form.erb')
 	eruby = Erubis::Eruby.new(template)
-	eruby.result("filters" => filters)
+	eruby.result(filters: filters, properties: properties)
 
 end
 

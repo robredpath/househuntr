@@ -17,6 +17,10 @@
 
 	<h2>Results</h2>
 
+	<% properties.each do |property| %>
+	 <%= property[:description] %> in <%= property[:postcode] %> for £<%=property[:price] %> and <%=property[:tram_walk_time] %> mins walk from trent tram stop<br />"
+	<% end %>
+
 
 
 </body>
