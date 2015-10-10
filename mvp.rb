@@ -50,7 +50,7 @@ post '/' do
 	# build up the new filter list
 	#filters = params.select { |k,v| /^filter/.match(k) }
 
-	PP.pp(params)
+	#PP.pp(params)
 
 
 	# present results
