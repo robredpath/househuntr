@@ -70,6 +70,6 @@ get '/' do
 			value: "180000"
 		},
 	]
-	eruby.result(filters: filters)
+	eruby.result("filters" => filters)
 
 end
