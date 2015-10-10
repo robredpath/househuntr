@@ -72,16 +72,10 @@ get '/' do
 	# send the form
 	template = File.read('form.erb')
 	eruby = Erubis::Eruby.new(template)
-	filters = [
-		{ 	label: "filter_city",
-			value: "Nottingham"
-		},
-		{ 	label: "filter_min_value",
-			value: "150000"
-		},		
-		{ 	label: "filter_max_value",
-			value: "180000"
-		}
+	filters = {
+		filter_city: "Nottingham",
+		filter_min_value: "150000",
+		filter_max_value: "180000"
 	]
 	eruby.result("filters" => filters)
 

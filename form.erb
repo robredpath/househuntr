@@ -5,8 +5,8 @@
 	<h1>househuntr: find the house that actually meets your needs</h1>
 	<h2>Search</h2>
 	<form method="post">
-	<% filters.each do |f| %>
-		<p><%= f[:label] %>: <input type="text" value="<%= f[:value] %>" name="filter_<%= f[:label] %>"/></p>
+	<% filters.each do |label, value| %>
+		<p><%= label %>: <input type="text" value="<%= value %>" name="filter_<%= label %>"/></p>
 	<% end %>
 		<select name="new_filter_type">
 			<option value="tram">Walking distance from NTU Tram</option>
