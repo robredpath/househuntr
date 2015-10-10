@@ -1,0 +1,8 @@
+{
+  "name": "Househuntr",
+  "description": "A new app for making it easier to find houses",
+  "image": "heroku/ruby",
+  "repository": "https://github.com/robredpath/househuntr",
+  "keywords": ["ruby"],
+  "addons": [ "heroku-postgresql" ]
+}
