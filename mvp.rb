@@ -50,7 +50,7 @@ post '/' do
 	# build up the new filter list
 	#filters = params.select { |k,v| /^filter/.match(k) }
 
-	params["filter_city"]
+	"I got #{params['filter_city']}"
 
 
 	# present results
