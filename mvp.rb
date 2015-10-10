@@ -51,7 +51,7 @@ post '/' do
 	# build up the new filter list
 	filters = params.select { |k,v| /^filter/.match(k) }
 
-	new_filter_label = "filter_#{params[:new_filter_type]}"
+	new_filter_label = "filter_#{params[:new_filter_type]}".to_sym
 	new_filter_value = params[:new_filter_time]
 
 	filters[new_filter_label] = new_filter_value
