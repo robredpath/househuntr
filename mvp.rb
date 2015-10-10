@@ -35,7 +35,7 @@ get '/' do
  		# http.request(req)
 		#}
 
-		output.concat property[1]
+		output.concat "#{property[1]}"
 	end
 
 	# if so => grab additional data from google maps API
