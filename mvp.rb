@@ -48,9 +48,9 @@ post '/' do
 	# filter results according to google maps data
 	
 	# build up the new filter list
-	filters = params.select { |k,v| /^filter/.match(k) }
+	#filters = params.select { |k,v| /^filter/.match(k) }
 
-	PP.pp(filters)
+	PP.pp(params)
 
 
 	# present results
