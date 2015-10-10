@@ -35,7 +35,7 @@ get '/' do
  		 http.request(req)
 		}
 
-		output .= res.body
+		output.concat res.body
 	end
 
 	# if so => grab additional data from google maps API
