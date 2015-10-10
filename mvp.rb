@@ -68,7 +68,7 @@ get '/' do
 		},		
 		{ 	label: "max_value",
 			value: "180000"
-		},
+		}
 	]
 	eruby.result("filters" => filters)
 
