@@ -3,6 +3,7 @@
 </head>
 <body>
 	<h1>househuntr: find the house that actually meets your needs</h1>
+	<h2>Search</h2>
 	<form action="#" method="post">
 	<% filters.each do |f| %>
 		<p><%= f[:label] %>: <input type="text" value="<%= f[:value] %>" /></p>
@@ -10,8 +11,10 @@
 		<select id="filter_type">
 			<option value="tram">Walking distance from NTU Tram</option>
 			<option value="m1">Driving distance from M1 at 8am on a weekday</option>
-		</select> : <input type="text">
+		</select> : <input type="text" id=> minutes
 		<p><input type="submit" value="Add filter"/></p>
 	</form>
+
+	<h2>Results</h2>
 </body>
 </html>
