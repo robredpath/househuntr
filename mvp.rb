@@ -7,6 +7,7 @@ require 'net/http'
 require 'json'
 require 'erubis'
 
+
 post '/' do
 
 	output = ""
@@ -54,11 +55,14 @@ post '/' do
 	new_filter_value = params[:new_filter_time]
 
 	filters[new_filter_label] = new_filter_value
-	filters.pretty_inspect
 
 	# present results
 	# => If there's no existing request, give the empty page
 	# => if there is an existing request, display it with the ability to add another item the query
+
+	template = File.read('form.erb')
+	eruby = Erubis::Eruby.new(template)
+	eruby.result("filters" => filters)
 
 end
 
