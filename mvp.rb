@@ -29,14 +29,15 @@ get '/' do
 	from_tram_stop = "Nottingham%20Trent%20University%20Tram%20Stop"
 
 	simple_search_data.each do |property|
-		url = URI::parse("https://maps.googleapis.com/maps/api/directions/json?origin=#{property[1]}&destination=#{from_tram_stop}&key=AIzaSyBz0ZEOpH17m35flnCwMrkei1xHlWgZohQ")
-		req = Net::HTTP::Get.new(url.to_s)
-		req.use_ssl = true
-		res = Net::HTTP.start(url.host, url.port) {|http|
- 		 http.request(req)
-		}
+		uri = URI("https://maps.googleapis.com/maps/api/directions/json?origin=#{property[1]}&destination=#{from_tram_stop}&key=AIzaSyBz0ZEOpH17m35flnCwMrkei1xHlWgZohQ")
 
-		output.concat res 
+		Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|   
+			request = Net::HTTP::Get.new uri
+			response = http.request request # Net::HTTPResponse object 
+			output.concat response.body.pretty_inspect
+
+		end 
+
 	end
 
 	# if so => grab additional data from google maps API
