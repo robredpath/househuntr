@@ -67,7 +67,7 @@ post '/' do
 
 	results = []
 	properties.each do |property|
-		results << property if property[:tram_walk_time] < filters[:filter_tram]
+		results.push property if property[:tram_walk_time] < filters[:filter_tram]
 	end
 
 	template = File.read('form.erb')
