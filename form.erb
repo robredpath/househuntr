@@ -7,6 +7,10 @@
 	<% filters.each do |f| %>
 		<p><%= f[:label] %>: <input type="text" value="<%= f[:value] %>" /></p>
 	<% end %>
+		<datalist id="filter_type">
+			<option value="distance from tram" />
+			<option value="distance from M1" />
+		</datalist>
 		<p><input type="submit" value="Add filter"/></p>
 	</form>
 </body>
