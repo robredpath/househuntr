@@ -58,7 +58,7 @@ post '/' do
 		filter_value: new_filter_value
 	}
 
-	filters.push new_filter
+	#filters.push new_filter
 
 	filters.pretty_inspect
 
