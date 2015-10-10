@@ -6,7 +6,6 @@
 	<form action="#" method="post">
 	<% filters.each do |f| %>
 	<% f %>
-		<p><% f[:label] %>: <input type="text" value="<% f[:value] %>" /></p>
 	<% end %>
 		<p><input type="submit" value="Add filter"/></p>
 	</form>
