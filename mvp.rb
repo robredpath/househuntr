@@ -5,6 +5,7 @@ require 'csv'
 require 'pp'
 require 'net/http'
 require 'json'
+require 'erubis'
 
 post '/' do
 
@@ -56,5 +57,8 @@ end
 get '/' do
 
 	# just send the form
+	template = File.read('form.erb')
+	eruby = Erubis::Eruby.new(input)
+	eruby.result()
 
 end
