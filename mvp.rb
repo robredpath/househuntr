@@ -5,13 +5,6 @@ require 'csv'
 require 'pp'
 require 'cgi'
 
-	class Property
-		def initialize(price,postcode,description)
-			@price = price
-			@postcode = postcode
-			@description = description
-		end
-	end
 
 get '/' do
 
