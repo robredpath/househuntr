@@ -4,8 +4,8 @@
 <body>
 	<h1>househuntr: find the house that actually meets your needs</h1>
 	<form action="#" method="post">
-	<% filters.each do |f| %>
-	<% PP.pp(f) %>
+	<% for f in filters %>
+
 		<p><% f[:label] %>: <input type="text" value="<% f[:value] %>" /></p>
 	<% end %>
 		<p><input type="submit" value="Add filter"/></p>
