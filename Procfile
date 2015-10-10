@@ -1,1 +1,1 @@
-web: bundle exec mvp.rb
+web: bundle exec ./mvp.rb
