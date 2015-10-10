@@ -53,19 +53,12 @@ post '/' do
 	new_filter_label = "filter_#{params[:new_filter_type]}"
 	new_filter_value = params[:new_filter_time]
 
-	new_filter = {
-		filter_label: new_filter_label,
-		filter_value: new_filter_value
-	}
-
-	#filters.push new_filter
-
+	filters[new_filter_label] = new_filter_value
 	filters.pretty_inspect
 
 	# present results
 	# => If there's no existing request, give the empty page
 	# => if there is an existing request, display it with the ability to add another item the query
-
 
 end
 
@@ -76,13 +69,13 @@ get '/' do
 	template = File.read('form.erb')
 	eruby = Erubis::Eruby.new(template)
 	filters = [
-		{ 	label: "city",
+		{ 	label: "filter_city",
 			value: "Nottingham"
 		},
-		{ 	label: "min_value",
+		{ 	label: "filter_min_value",
 			value: "150000"
 		},		
-		{ 	label: "max_value",
+		{ 	label: "filter_max_value",
 			value: "180000"
 		}
 	]
