@@ -65,6 +65,11 @@ post '/' do
 	# => If there's no existing request, give the empty page
 	# => if there is an existing request, display it with the ability to add another item the query
 
+	results = []
+	properties.each do |property|
+		results << property if property[:tram_walk_time] < filters[:filter_tram]
+	end
+
 	template = File.read('form.erb')
 	eruby = Erubis::Eruby.new(template)
 	eruby.result(filters: filters, properties: properties)
