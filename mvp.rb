@@ -50,8 +50,7 @@ post '/' do
 	# build up the new filter list
 	#filters = params.select { |k,v| /^filter/.match(k) }
 
-	"I got #{params[:filter_city]}"
-
+ 	params.inspect
 
 	# present results
 	# => If there's no existing request, give the empty page
