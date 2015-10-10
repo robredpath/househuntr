@@ -58,7 +58,7 @@ get '/' do
 
 	# just send the form
 	template = File.read('form.erb')
-	eruby = Erubis::Eruby.new(input)
+	eruby = Erubis::Eruby.new(template)
 	eruby.result()
 
 end
