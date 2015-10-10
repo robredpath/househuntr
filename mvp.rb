@@ -38,7 +38,6 @@ get '/' do
 		output.concat res.body
 	end
 
-
 	# if so => grab additional data from google maps API
 
 	# is there an 'x distance from the motorway' type query?
