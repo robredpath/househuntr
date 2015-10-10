@@ -1,8 +1,12 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
-#use csv
-use pp 
-use cgi
+require 'csv'
+require 'pp'
+require 'cgi'
+
+cgi = CGI.new
+
+#use cgi
 
 # define some data structures
 
@@ -22,7 +26,7 @@ end
 # Do initial search based on geographic data, price banding, all the easy stuff
 
 # MOCKUP - load sample csv from disk
-simple_search_data = CSV.read("~/public_html/househuntr/sampledata.csv")
+simple_search_data = CSV.read("sampledata.csv")
 
 # TODO - grab data from external data source and parse for important values
 
