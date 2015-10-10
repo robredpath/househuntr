@@ -5,10 +5,6 @@ require 'csv'
 require 'pp'
 require 'cgi'
 
-get '/' do
-
-	# define some data structures
-
 	class Property
 		def initialize(price,postcode,description)
 			@price = price
@@ -16,6 +12,10 @@ get '/' do
 			@description = description
 		end
 	end
+
+get '/' do
+
+	# define some data structures
 
 
 	# grab the data from the POST request
