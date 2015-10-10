@@ -4,8 +4,10 @@
 <body>
 	<h1>househuntr: find the house that actually meets your needs</h1>
 	<form action="#" method="post">
-		<p>City: <input type="text"></p>
-		<p><input type="submit" /></p>
+	<% @filters.each do |label,value| %>
+		<p><% label %>: <input type="text" value="<% value %>" /></p>
+	<% end %>
+		<p><input type="submit" value="Add filter"/></p>
 	</form>
 </body>
 </html>
