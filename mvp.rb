@@ -26,7 +26,7 @@ get '/' do
 	# MOCKUP - let's assume yes, and let's assume it's just the one tram stop and 3 mins walk
 
 	simple_search_data.each do |property|
-	 pp property
+	 property
 	end
 
 	# if so => grab additional data from google maps API
