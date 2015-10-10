@@ -6,12 +6,11 @@ require 'pp'
 require 'net/http'
 require 'json'
 
-get '/' do
+post '/' do
 
 	output = ""
 
 	# define some data structures
-
 
 	# grab the data from the POST request
 
@@ -36,12 +35,11 @@ get '/' do
 			request = Net::HTTP::Get.new uri
 			response = http.request request # Net::HTTPResponse object 
 			duration = JSON.parse(response.body)["rows"].first["elements"].first["duration"]["text"] 
-			output.concat "#{property[2]} in #{property[1]} for £#{property[0]} and #{duration} mins walk from trent tram stop\n"
+			output.concat "#{property[2]} in #{property[1]} for £#{property[0]} and #{duration} mins walk from trent tram stop<br />"
 		end 
 	end
 
 	# if so => grab additional data from google maps API
-
 	# is there an 'x distance from the motorway' type query?
 
 	# if so => grab additional data from google maps API
@@ -51,5 +49,12 @@ get '/' do
 	# present results
 	# => If there's no existing request, give the empty page
 	# => if there is an existing request, display it with the ability to add another item the query
+
+end
+
+
+get '/' do
+
+	# just send the form
 
 end
