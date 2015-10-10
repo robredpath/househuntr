@@ -56,7 +56,7 @@ end
 
 get '/' do
 
-	# just send the form
+	# send the form
 	template = File.read('form.erb')
 	eruby = Erubis::Eruby.new(template)
 	filters = [
