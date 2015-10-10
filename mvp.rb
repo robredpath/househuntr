@@ -8,6 +8,8 @@ require 'cgi'
 
 get '/' do
 
+	output = ""
+
 	# define some data structures
 
 
@@ -25,9 +27,7 @@ get '/' do
 	# is there an 'x distance from a tram stop' type query? 
 	# MOCKUP - let's assume yes, and let's assume it's just the one tram stop and 3 mins walk
 
-	simple_search_data.each do |property|
-		property[1]
-	end
+	simple_search_data.pretty_inspect
 
 	# if so => grab additional data from google maps API
 
