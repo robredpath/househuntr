@@ -50,8 +50,16 @@ post '/' do
 	# build up the new filter list
 	filters = params.select { |k,v| /^filter/.match(k) }
 
+	new_filter_label = "filter_#{params[:new_filter_type]}"
+	new_filter_value = params[:new_filter_time]
+
+	filters.push {
+		filter_label: new_filter_label
+		filter_value: new_filter_value
+	}
+
 	filters.pretty_inspect
-	 
+
 	# present results
 	# => If there's no existing request, give the empty page
 	# => if there is an existing request, display it with the ability to add another item the query
