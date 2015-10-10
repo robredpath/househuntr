@@ -50,7 +50,8 @@ post '/' do
 	# build up the new filter list
 	filters = params.select { |k,v| /^filter/.match(k) }
 
-	filters 
+	filters.pretty_inspect
+	 
 	# present results
 	# => If there's no existing request, give the empty page
 	# => if there is an existing request, display it with the ability to add another item the query
