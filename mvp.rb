@@ -4,7 +4,7 @@ require 'csv'
 require 'pp'
 require 'cgi'
 
-cgi = CGI.new
+cgi = CGI.new("html5")
 
 #use cgi
 
