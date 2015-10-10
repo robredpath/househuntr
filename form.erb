@@ -6,7 +6,7 @@
 	<h2>Search</h2>
 	<form method="post">
 	<% filters.each do |f| %>
-		<p><%= f[:label] %>: <input type="text" value="<%= f[:value] %>" id="filter_<% f[:label] %>"/></p>
+		<p><%= f[:label] %>: <input type="text" value="<%= f[:value] %>" id="filter_<%= f[:label] %>"/></p>
 	<% end %>
 		<select id="new_filter_type">
 			<option value="tram">Walking distance from NTU Tram</option>
