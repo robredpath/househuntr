@@ -67,6 +67,7 @@ post '/' do
 
 	results = []
 	properties.each do |property|
+		logger.info property.pretty_inspect
 		if property[:tram_walk_time] < filters[:filter_tram]
 			results.push property
 		end
