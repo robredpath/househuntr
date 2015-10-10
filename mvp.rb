@@ -76,7 +76,7 @@ get '/' do
 		filter_city: "Nottingham",
 		filter_min_value: "150000",
 		filter_max_value: "180000"
-	]
+	}
 	eruby.result("filters" => filters)
 
 end
