@@ -26,7 +26,7 @@ get '/' do
 	# MOCKUP - let's assume yes, and let's assume it's just the one tram stop and 3 mins walk
 
 	simple_search_data.each do |property|
-	 puts property[1]
+		property[1]
 	end
 
 	# if so => grab additional data from google maps API
@@ -38,7 +38,7 @@ get '/' do
 	# filter results according to google maps data
 
 	# present results
-
+	"hello"
 	# => If there's no existing request, give the empty page
 	# => if there is an existing request, display it with the ability to add another item the query
 
