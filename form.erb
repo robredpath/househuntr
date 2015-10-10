@@ -6,15 +6,18 @@
 	<h2>Search</h2>
 	<form action="#" method="post">
 	<% filters.each do |f| %>
-		<p><%= f[:label] %>: <input type="text" value="<%= f[:value] %>" /></p>
+		<p><%= f[:label] %>: <input type="text" value="<%= f[:value] %>" id="filter_<% f[:label] %>"/></p>
 	<% end %>
-		<select id="filter_type">
+		<select id="new_filter_type">
 			<option value="tram">Walking distance from NTU Tram</option>
 			<option value="m1">Driving distance from M1 at 8am on a weekday</option>
-		</select> : <input type="text" id=> minutes
+		</select> : <input type="text" id="new_filter_time"> minutes
 		<p><input type="submit" value="Add filter"/></p>
 	</form>
 
 	<h2>Results</h2>
+
+
+
 </body>
 </html>
