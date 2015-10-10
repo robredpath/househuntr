@@ -3,8 +3,7 @@
 require 'sinatra'
 require 'csv'
 require 'pp'
-require 'cgi'
-
+require 'net/http'
 
 get '/' do
 
@@ -27,7 +26,17 @@ get '/' do
 	# is there an 'x distance from a tram stop' type query? 
 	# MOCKUP - let's assume yes, and let's assume it's just the one tram stop and 3 mins walk
 
-	simple_search_data.pretty_inspect
+	from_tram_stop = "Nottingham%20Trent%20University%20Tram%20Stop"
+
+	simple_search_data.each do |property|
+		url = URI.parse("https://maps.googleapis.com/maps/api/directions/json?origin=#{property[1]}&destination=#{from_tram_stop}&key=AIzaSyBz0ZEOpH17m35flnCwMrkei1xHlWgZohQ")
+		req = Net::HTTP::Get.new(url.to_s)
+		res = Net::HTTP.start(url.host, url.port) {|http|
+ 		 http.request(req)
+		}
+
+		output .= res.body
+	end
 
 	# if so => grab additional data from google maps API
 
@@ -36,7 +45,7 @@ get '/' do
 	# if so => grab additional data from google maps API
 
 	# filter results according to google maps data
-
+	output 
 	# present results
 	# => If there's no existing request, give the empty page
 	# => if there is an existing request, display it with the ability to add another item the query
