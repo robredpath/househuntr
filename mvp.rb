@@ -29,7 +29,7 @@ post '/' do
 	# MOCKUP - let's assume yes, and let's assume it's just the one tram stop and 3 mins walk
 
 	from_tram_stop = "Nottingham%20Trent%20University%20Tram%20Stop"
-
+	properties = []
 	simple_search_data.each do |property|
 		uri = URI("https://maps.googleapis.com/maps/api/distancematrix/json?mode=walking&origins=#{property[1]}&destinations=#{from_tram_stop}&key=AIzaSyBz0ZEOpH17m35flnCwMrkei1xHlWgZohQ")
 
@@ -37,7 +37,12 @@ post '/' do
 			request = Net::HTTP::Get.new uri
 			response = http.request request # Net::HTTPResponse object 
 			duration = JSON.parse(response.body)["rows"].first["elements"].first["duration"]["text"] 
-			output.concat "#{property[2]} in #{property[1]} for £#{property[0]} and #{duration} mins walk from trent tram stop<br />"
+			properties << {
+				price: property[0],
+				postcode: property[1],
+				description: property[2],
+				tram_walk_time: duration
+			}
 		end 
 	end
 
