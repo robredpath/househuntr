@@ -20,14 +20,14 @@ post '/' do
 	# Do initial search based on geographic data, price banding, all the easy stuff
 
 	# MOCKUP - load sample csv from disk
-	simple_search_data = CSV.read("sampledata.csv")
+	#simple_search_data = CSV.read("sampledata.csv")
 
 	# TODO - grab data from external data source and parse for important values
 
 	# is there an 'x distance from a tram stop' type query? 
 	# MOCKUP - let's assume yes, and let's assume it's just the one tram stop and 3 mins walk
 
-	from_tram_stop = "Nottingham%20Trent%20University%20Tram%20Stop"
+	#from_tram_stop = "Nottingham%20Trent%20University%20Tram%20Stop"
 
 	#simple_search_data.each do |property|
 	#	uri = URI("https://maps.googleapis.com/maps/api/distancematrix/json?mode=walking&origins=#{property[1]}&destinations=#{from_tram_stop}&key=AIzaSyBz0ZEOpH17m35flnCwMrkei1xHlWgZohQ")
