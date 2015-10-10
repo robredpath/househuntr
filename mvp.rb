@@ -57,7 +57,7 @@ post '/' do
 	# => If there's no existing request, give the empty page
 	# => if there is an existing request, display it with the ability to add another item the query
 
-	PP.pp("test")
+	"test".pretty_inspect
 
 end
 
