@@ -21,23 +21,38 @@ post '/' do
 	# Do initial search based on geographic data, price banding, all the easy stuff
 
 	# MOCKUP - load sample csv from disk
-	simple_search_data = CSV.read("sampledata.csv")
+	properties = CSV.read("properties.csv")
+	tramstops = CSV.read("tramstops.csv")
 
 	# TODO - grab data from external data source and parse for important values
 
 	# is there an 'x distance from a tram stop' type query? 
 	# MOCKUP - let's assume yes, and let's assume it's just the one tram stop and 3 mins walk
 
-	from_tram_stop = "Nottingham%20Trent%20University%20Tram%20Stop"
-	properties = []
+	output_properties = []
 	simple_search_data.each do |property|
-		uri = URI("https://maps.googleapis.com/maps/api/distancematrix/json?mode=walking&origins=#{property[1]}&destinations=#{from_tram_stop}&key=AIzaSyBz0ZEOpH17m35flnCwMrkei1xHlWgZohQ")
 
+		# Get the tram stops
+		trams_in_query = ""
+		tramstops.each do |stop|
+			trams_in_query << stop[0] 
+		end
+
+		# Ask Google how far it is to each of them
+		uri = URI("https://maps.googleapis.com/maps/api/distancematrix/json?mode=walking&origins=#{property[1]}&destinations=#{trams_in_query}&key=AIzaSyBz0ZEOpH17m35flnCwMrkei1xHlWgZohQ")
 		Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|   
 			request = Net::HTTP::Get.new uri
 			response = http.request request # Net::HTTPResponse object 
-			duration = JSON.parse(response.body)["rows"].first["elements"].first["duration"]["text"].split(" ")[0]
-			properties << {
+
+			tramstops_from_property = tramstops
+			gmaps_data = JSON.parse(response.body)["rows"].first["elements"]
+
+			gmaps_data.each do |dest|
+				duration = dest["duration"]["text"].split(" ")[0]
+				properties[gmaps_data.index(dest)] << duration
+			end
+
+			output_properties << {
 				price: property[0],
 				postcode: property[1],
 				description: property[2],
